@@ -1,11 +1,3 @@
-// ====================== E2 Project =========================
-//
-// File: defs.h
-//
-// Purpose / Abstract: Base defintions.
-//
-// =========================================================== 
-
 #ifndef _E2_DEFS_H
 #define _E2_DEFS_H
 
@@ -13,35 +5,14 @@
 
 // These don't do anything - they're just hints to potentional code users
 // that they're interfaces which are completely abstract.
-#define abstract_class class
-#define abstract_struct struct
 
-// Define the super-class for a class.
-// Note that protection level guarding is included
-// to catch any non-class scope of this macro being invoked
-//
-// example usage:
-//
-// struct CMyInterfaceImplementer : public IMyInterface {
-//		DEFINE_SUPERCLASS(IMyInterface)
-// };
-//
-#define DEFINE_SUPERCLASS(base) public: \
-                            typedef base _super; \
-                         private:
+#define interface struct
+
+#define abstract_class interface
+#define abstract_struct interface
 
 
-// Constexpr function template to make a reference to TSuper
-// (which will be T::_super) from the class this pointer.
-template<typename T, typename TSuper = typename T::_super>
-constexpr TSuper& __superclass_mkref(T* that) {
-	return *((TSuper*)that);
-}
-
-// Casts the class this pointer to the defined super type,
-// allowing you to do something akin to Java's `super` keyword.
-#define super __superclass_mkref(this)
-
+#include <class.h>
 
 // Platform detection
 
@@ -66,12 +37,6 @@ constexpr TSuper& __superclass_mkref(T* that) {
 // This one's easy.
 #ifdef _MSC_VER
 	#define E2_MSVC
-#endif
-
-#if defined(__INTELLISENSE__)
-	// Detect IntelliSense.
-	// Use this to block off code intellisense may be angry at
-	#define E2_INTELLISENSE
 #endif
 
 // Clang masqurades as a version of GCC so we check for that

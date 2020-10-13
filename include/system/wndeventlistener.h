@@ -5,7 +5,7 @@ namespace e2 {
 namespace system {
 	
 	// Window event listener struct.
-	abstract_struct WindowEventListener {
+	interface WindowEventListener {
 
 		virtual void OnMouseMove(int dx, int dy) = 0;
 

@@ -1,5 +1,6 @@
 // This source file is not compiled into the system library,
 // rather it is provided as an example of how to port system library to your stuff
+// it is obsolete
 
 #include <defs.h>
 

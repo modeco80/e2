@@ -1,0 +1,17 @@
+E2 notes
+
+- entities (unity people would call these "gameobjects")
+	- entities are not (completely) abstract classes
+		- they can be defined as native code (in which case native code can define components to add/logic) 
+				or loaded from a binary/xml file.
+			- prefer binary, if a release build loads an XML entity warn about it.
+
+- component system
+	- components are native code primarily
+		- however there could be a scripting component that allows the use of a scripting language
+			- This will facilitate easy rapid development of components, and if needed
+				could even be shippable in a game without issue
+	- components attach to entities, essentially as building blocks of the entity
+	- components can be disabled/reenabled on the fly
+		- allows entity/code reuse 
+			(ie: for multiplayer, simply use the same player entity but disable client physics components)

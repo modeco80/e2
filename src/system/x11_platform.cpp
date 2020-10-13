@@ -1,3 +1,4 @@
+// OBSOLETE
 #include <defs.h>
 #include <platform_iface.h>
 
